@@ -1,4 +1,4 @@
-module github.com/jda/go-crx3
+module github.com/jda/go-crx3lite
 
 go 1.16
 

@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/jda/go-crx3/pb"
+	"github.com/jda/go-crx3lite/pb"
 
 	"google.golang.org/protobuf/proto"
 )
