@@ -4,26 +4,19 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"io/ioutil"
 
-	"github.com/mediabuyerbot/go-crx3/pb"
+	"github.com/jda/go-crx3/pb"
 
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 )
 
 const symbols = "abcdefghijklmnopqrstuvwxyz"
 
 // ID returns the extension id.
-func ID(filename string) (id string, err error) {
-	if !isCRX(filename) {
+func ID(crx []byte) (id string, err error) {
+	if !IsCRX(crx) {
 		return id, ErrUnsupportedFileFormat
 	}
-
-	crx, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return id, err
-	}
-
 	var (
 		headerSize = binary.LittleEndian.Uint32(crx[8:12])
 		metaSize   = uint32(12)
